@@ -1,0 +1,44 @@
+body {
+    background-color: black;
+    
+}
+
+h1 {
+    color: white;
+    text-align: center;
+}
+
+#gifForm {
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    width: 100px;
+    height: 30px;
+    border-radius: 8px;
+    color: white;
+
+}
+
+#submitBtn {
+    background-color: #333333;
+}
+
+#removeBtn {
+    background-color:orangered;
+}
+
+#gifSearch {
+    border-radius: 8px;
+}
+
+#gifSearch::placeholder {
+    text-align: center;
+}
+
+img {
+    width: 400px;
+    height: 300px;
+    padding: 20px;
+}
