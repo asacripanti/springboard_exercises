@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boggle</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+
+
+</head>
+<body>
+    <h1>Boggle Game</h1>
+    <div id="timer">Time: <span id="count">60</span></div>
+    <div id="board-container">
+        <table>
+            {% for row in board %}
+                <tr>
+                    {% for letter in row %}
+                        <td>{{ letter }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div id="game-info">
+        <p>Times Played: <span id="times-played">0</span></p>
+        <p>Highest Score: <span id="highest-score">0</span></p>
+    </div>
+
+    
+        <form id="guess-form"  method="POST">
+            
+            <label for="word">Enter your guess:</label>
+            <input type="text" id="word" name="word" required>
+            <button type="submit">Submit</button>
+        </form>
+        <p>Score: <span id="score">0</span></p>
+    <div id="message"></div>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="/static/js/app.js"></script>    
+</body>
+</html>
