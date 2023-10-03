@@ -5,6 +5,7 @@ from models import db, connect_db, User, Post, Tag, PostTag
 from flask_debugtoolbar import DebugToolbarExtension
 
 # what does all this do?
+# TEST
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'myKey'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///blogly'
