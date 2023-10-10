@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block page_title %}Add User{% endblock %}
+
+{% block content %}
+  <h3>Add User</h3>
+  <form method="post">
+    <label for="user_name">Username</label>
+    <input type="text" name="user_name" id="user_name" required>
+
+    <label for="image_url">Image URL:</label>
+    <input type="text" name="image_url" id="image_url"><br>
+
+    <button type="submit">Add User</button>
+  </form>
+  <a href="{{ url_for('show_all_users') }}">Cancel</a>
+{% endblock %}
