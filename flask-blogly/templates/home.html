@@ -1,33 +1,36 @@
 {% extends "base.html" %}
 
+{% block styles %}
+    <link rel="stylesheet" href="/static/styles/styles.css">
+{% endblock %}
+
 {% block page_title %}Home{% endblock %}
 
+
 {% block content %}
-<h3><a class="btn btn-sm btn-secondary" href="/users">Users</a></h3>
-  <ul>
-    {% for user in users %}
-      <li>
-        <a href="/users/{{ user.id }}">{{ user.full_name }}</a>
-      </li>
-    {% endfor %}
-  </ul>
-  <p><a class="btn btn-sm btn-secondary" href="/users/new">Add user</a></p>
-  <h3>Posts</h3>
-  <ul>
-    {% for post in posts %}
-      <li>
-        {{ post.title }}
-      </li>
-      {% endfor %}
-  </ul>
-  <p><a class="btn btn-sm btn-secondary" href="/users/{{ user_id }}/posts/new">Add post</a></p>
-  <h4>Tags</h4>
-  <ul>
-    {% for tag in tags %}
+<section class="topHalf">
+  <button class="homeNewUserBtn" onclick="window.location.href='{{ url_for('show_add_user_form')}}'">New User</button>
+  <button class="homeExistingUserBtn" onclick="window.location.href='{{ url_for('show_all_users')}}'">Existing User</button>
+
+
+
+
+
+</section>
+<section class="bottomHalf">
+  <h3>Recent Posts</h3>
+  {% for comment in comments[:5] %}
+  <div class="commentContainer">
+  <ul class="commentList">
     <li>
-        {{ tag.name }}
+      <a class="commentTitle" href="/users/{{ comment.user_id }}/posts/{{ comment.id }}">{{ comment.title }}</a> by <a class="commentName" href="{{ url_for('users_show', user_id=comment.user_id) }}">{{ comment.user_name }}</a>
+      <br>
+      <span class="commentContent">{{comment.content}}</span> 
+      <br>
+      <span class="tagsTitle">Tags: </span><span class="commentTag">{{ comment.name }}</span>
     </li>
-    {% endfor %}
-  </ul>
-  
+  </ul>  
+</div>
+{% endfor %}
+</section>  
 {% endblock %}

@@ -3,20 +3,24 @@
 {% block page_title %}Add Post{% endblock %}
 
 {% block content %}
-  <h3>Add Post</h3>
-  <form method="post">
-    <input type="hidden" name="user_id" value="{{ user.id }}">
-    <label for="title">Title:</label>
-    <input type="text" name="title" id="post_title" required><br>
+<section class="postFormSection"> 
+  <div class="postFormHeader">
+      <button class="postFormHomeBtn" onclick="window.location.href='{{ url_for('home_page')}}'">Home</button>
+      <button class="postFormUsersBtn" onclick="window.location.href='{{ url_for('show_all_users')}}'">Users</button>
+  </div>
+ 
+ 
+  <form method="post" class="postFormForm">
 
-    <label for="content">Text:</label>
-    <input type="text" name="content" id="post_content" required><br>
-
-    <label for="tags">Tags:</label>
-    <input type="text" name="tags" id="post_tags" placeholder="Add tags, separated by commas"><br>
-
-
-    <button type="submit">Add</button>
+  
+    <input type="text" class="postFormTitle" name="title" id="post_title" placeholder="Title" required>
+    <textarea name="content" class="postFormContent" id="post_content" cols="30" rows="10" placeholder="Text"></textarea>
+    <input type="text" class="postFormTags" name="tags" id="post_tags" placeholder="Add tags, separated by commas">
+ 
+    <div class="postFormFooter">
+      <button class="postFormCancelBtn" onclick="window.location.href='{{ url_for('show_all_users') }}' " type="submit">Cancel</button>
+      <button class="postFormSubmitBtn" type="submit">Add</button>
+    </div>
   </form>
-  <a href="{{ url_for('show_all_users') }}">Cancel</a>
+</section>
 {% endblock %}

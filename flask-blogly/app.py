@@ -5,10 +5,9 @@ from models import db, connect_db, User, Post, Tag, PostTag
 from flask_debugtoolbar import DebugToolbarExtension
 
 # what does all this do?
-# TEST
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'myKey'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///blogly'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///blogly_v2'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
 
@@ -33,12 +32,18 @@ def redirect_to_users():
 @app.route('/home')
 def home_page():
     """Home page"""
-    users = User.query.all()
-    posts = Post.query.all()
-    tags = Tag.query.all()
-    
 
-    return render_template('home.html', users=users, posts=posts, tags=tags)
+    u = User
+    p = Post
+    t = Tag
+
+    comments = (db.session.query(u.user_name, p.title, t.name, p.user_id, p.id, p.content)
+    .join(p)
+    .join(PostTag)
+    .join(t)
+    .all())
+
+    return render_template('home.html', comments=comments)
 
     
 
@@ -60,12 +65,11 @@ def show_add_user_form():
 def add_user():
     """Add new user"""
 
-    first_name = request.form['first_name']
-    last_name = request.form['last_name']
+    user_name = request.form['user_name']
     image_url = request.form['image_url']
 
     # Create a new User object and add it to the database session
-    new_user = User(first_name=first_name, last_name=last_name, image_url=image_url)
+    new_user = User(user_name=user_name, image_url=image_url)
     db.session.add(new_user)
     db.session.commit()
 
@@ -92,8 +96,7 @@ def users_update(user_id):
     """Handle form submission for updating an existing user"""
 
     user = User.query.get_or_404(user_id)
-    user.first_name = request.form['first_name']
-    user.last_name = request.form['last_name']
+    user.user_name = request.form['user_name']
     user.image_url = request.form['image_url']
 
     db.session.add(user)
@@ -126,9 +129,8 @@ def post_form(user_id):
     """View form to add post"""
 
     user = User.query.get_or_404(user_id)
-
     post = Post()
-    return render_template('post_form.html', user=user, post=post)
+    return render_template('post_form.html', post=post, user=user)
 
 
 @app.route('/users/<int:user_id>/posts/new', methods=['POST'])
@@ -140,6 +142,8 @@ def add_post(user_id):
     post.title = request.form['title']
     post.content = request.form['content']
     post.user_id = user_id 
+
+    user = User.query.get_or_404(user_id)
 
     tags = request.form['tags'].split(',')
     for tag_name in tags:
@@ -161,6 +165,7 @@ def add_post(user_id):
     db.session.commit()
 
     return redirect("/users")
+
 
 @app.route('/users/<int:user_id>/posts/<int:post_id>/edit', methods=['GET'])
 def post_edit(user_id, post_id):
@@ -194,6 +199,10 @@ def post_delete(user_id, post_id):
 
     
     post = Post.query.get_or_404(post_id)
+
+    post_tags = PostTag.query.filter_by(post_id=post_id).all()
+    for post_tag in post_tags:
+        db.session.delete(post_tag)
 
     db.session.delete(post)
     db.session.commit()

@@ -3,27 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/styles/styles.css">
+  
     <title>{% block title %}My Blogly App{% endblock %}</title>
 </head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/users">All Users</a></li>
-                <!-- Add more navigation links here -->
-            </ul>
-        </nav>
-        <h1>{% block page_title %}{% endblock %}</h1>
-        <!-- Add navigation or header content here if needed -->
-    </header>
-    <main>
-        <div class="container">
+<body>    
             {% block content %}{% endblock %}
-        </div>
-    </main>
-    <footer>
-        <!-- Add footer content here if needed -->
-    </footer>
 </body>
 </html>

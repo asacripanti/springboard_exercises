@@ -1,29 +1,37 @@
 {% extends "base.html" %}
 
+{% block styles %}
+    <link rel="stylesheet" href="/static/styles/styles.css">
+{% endblock %}
+
 {% block page_title %}Post Detail{% endblock %}
 
 {% block content %}
-  <h3>Post Detail</h3>
-  <p><strong>Title:</strong> {{ post.title }}</p>
-  <p><strong>Content:</strong> {{ post.content }}</p>
-  <p><strong>Author:</strong> {{ user.full_name }}</p>
+<section class="postView">
+  <h3 class="postViewH3">Post Detail</h3>
+  <p class="postViewPostTitle"><strong>Title:</strong> {{ post.title }}</p>
+  <p class="postViewPostUser"><strong>Author:</strong><a href="{{ url_for('users_show', user_id=user.id) }}">{{ user.user_name }}</a>
+  <div class="postViewContent">
+    <p><strong>Content:</strong> {{ post.content }}</p>
+  </div>
+
+ 
 
   {% if post.post_tags %}
-    <p><strong>Tags:</strong>
+    <p class="postViewPostTags"><strong>Tags:</strong>
       {% for tag in post.post_tags %}
         <span class="badge badge-primary">{{ tag.tag.name }}</span>
       {% endfor %}
     </p>
   {% endif %}
 
-  <a href="{{ url_for('users_show', user_id=user.id) }}">Back to User</a>
-
-  <form method="get" action="{{ url_for('post_edit', user_id=user.id, post_id=post.id) }}" style="display: inline-block;">
-    <button type="submit" class="btn btn-primary">Edit</button>
+  <form method="get" class="postViewEditForm" action="{{ url_for('post_edit', user_id=user.id, post_id=post.id) }}" style="display: inline-block;">
+    <button type="submit" class="postViewEditBtn">Edit</button>
   </form>
 
-  <form method="post" action="{{ url_for('post_delete', user_id=user.id, post_id=post.id) }}" style="display: inline-block;">
-    <button type="submit" class="btn btn-danger">Delete</button>
+  <form method="post" class="postViewDeleteForm" action="{{ url_for('post_delete', user_id=user.id, post_id=post.id) }}" style="display: inline-block;">
+    <button type="submit" class="postViewDeleteBtn">Delete</button>
   </form>
+</section>
   
 {% endblock %}
