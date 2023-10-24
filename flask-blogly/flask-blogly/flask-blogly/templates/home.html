@@ -9,9 +9,7 @@
 
 {% block content %}
 <section class="topHalf">
-  <button class="homeNewUserBtn" onclick="window.location.href='{{ url_for('show_add_user_form')}}'">New User</button>
-  <button class="homeExistingUserBtn" onclick="window.location.href='{{ url_for('show_all_users')}}'">Existing User</button>
-
+  <button class="addPostBtn" onclick="window.location.href='{{ url_for('post_form') }}'">Add Post</button>
 
 
 
@@ -23,7 +21,7 @@
   <div class="commentContainer">
   <ul class="commentList">
     <li>
-      <a class="commentTitle" href="/users/{{ comment.user_id }}/posts/{{ comment.id }}">{{ comment.title }}</a> by <a class="commentName" href="{{ url_for('users_show', user_id=comment.user_id) }}">{{ comment.user_name }}</a>
+      <a class="commentTitle" href="/users/{{ comment.user_id }}/posts/{{ comment.id }}">{{ comment.title }}</a> by <a class="commentName" href="{{ url_for('users_show', user_id=comment.user_id) }}">{{ comment.first_name }}</a>
       <br>
       <span class="commentContent">{{comment.content}}</span> 
       <br>
@@ -32,5 +30,15 @@
   </ul>  
 </div>
 {% endfor %}
+<a class="btn btn-sm btn-secondary" href="/users/new">Add user</a>
+<a href="/users">All Users</a>
+
+
+
+
+
+
+
+
 </section>  
 {% endblock %}

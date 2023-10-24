@@ -124,13 +124,12 @@ def post_view(user_id, post_id):
 
 
 
-@app.route('/users/<int:user_id>/posts/new', methods=['GET'])
-def post_form(user_id):
+@app.route('/posts/new', methods=['GET'])
+def post_form():
     """View form to add post"""
 
-    user = User.query.get_or_404(user_id)
     post = Post()
-    return render_template('post_form.html', post=post, user=user)
+    return render_template('post_form.html', post=post)
 
 
 @app.route('/users/<int:user_id>/posts/new', methods=['POST'])
@@ -166,7 +165,6 @@ def add_post(user_id):
 
     return redirect("/users")
 
-
 @app.route('/users/<int:user_id>/posts/<int:post_id>/edit', methods=['GET'])
 def post_edit(user_id, post_id):
     """Form to edit post"""
@@ -199,10 +197,6 @@ def post_delete(user_id, post_id):
 
     
     post = Post.query.get_or_404(post_id)
-
-    post_tags = PostTag.query.filter_by(post_id=post_id).all()
-    for post_tag in post_tags:
-        db.session.delete(post_tag)
 
     db.session.delete(post)
     db.session.commit()

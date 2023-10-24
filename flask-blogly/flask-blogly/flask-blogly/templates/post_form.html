@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block page_title %}Add Post{% endblock %}
+
+{% block content %}
+<header>
+  <a class="homeHeaderLink" href="/">Home</a>
+</header>
+<section class="postFormSection"> 
+  <div class="postFormHeader">
+      <button class="postFormHomeBtn"></button>
+      <button class="postFormExistingUserBtn"></button>   
+  </div>
+ 
+ 
+  <form method="post" class="postFormForm">
+    {# <input type="hidden" name="user_id" value="{{ user.id }}"> #}
+    {# Include the radio buttons for user choice #} 
+    {#<input type="hidden" name="user_id" value="{{ user.id }}">#}
+
+    <input type="text" class="postFormUsername" name="username" id="username" placeholder="New Username"> 
+    <input type="text" class="postFormTitle" name="title" id="post_title" placeholder="Title" required>
+    <input type="text" class="postFormContent" name="content" id="post_content"  placeholder="Text">
+    <input type="text" class="postFormTags" name="tags" id="post_tags" placeholder="Add tags, separated by commas">
+
+    {# Use an if statement to conditionally display the username field #}
+    {% if user_choice == "new" %}
+      <label for="new_username">New Username:</label>
+      <input type="text" name="new_username" id="new_username" required><br>
+    {% elif user_choice == "existing" %}
+      <label for="existing_username">Select Existing Username:</label>
+      <select name="existing_username" id="existing_username" required>
+        <!-- Populate this select element with existing usernames -->
+      </select><br>
+    {% endif %}
+    <div class="postFormFooter">
+      <button class="postFormCancelBtn" onclick="window.location.href='{{ url_for('show_all_users') }}' " type="submit">Cancel</button>
+      <button class="postFormSubmitBtn" type="submit">Add</button>
+    </div>
+  </form>
+</section>
+{% endblock %}

@@ -1,0 +1,235 @@
+body{
+    height: 1000px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(218, 224, 230);
+}
+
+/* HOME */
+
+.topHalf{
+    height: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bottomHalf{
+    height: 55%;
+    width: 840px;
+    border: 1px solid #A09BE7;
+    background-color: rgb(255, 255, 255);
+}
+
+.addPostBtn{
+    cursor: pointer;
+    height: 70px;
+    width: 250px;
+    font-size: 1.2em;
+    letter-spacing: 0.1em;
+    padding: 0.6em 2em;
+    border: 1px solid black;
+    outline: none;
+    color: black;
+    background-color: white;
+    z-index: 0;
+    border-radius: 10px;
+    transition: 0.5s; 
+    
+}
+
+.addPostBtn:hover{
+    color: #A09BE7;
+    box-shadow: 0 0 35px #A09BE7;
+    letter-spacing: 0.25em;
+}
+
+.commentList{
+    list-style-type: none;
+}
+
+.commentContainer{
+    width: 95%;
+    height: 90px;
+    margin-bottom: 5px;
+    word-wrap: break-word;
+}
+
+.commentTitle{
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+}
+
+.commentTitle:hover{
+    color: #A09BE7;
+}
+
+.commentName{
+    color: black;
+    text-decoration: none;
+}
+
+.commentName:hover{
+    color: #A09BE7;
+}
+
+.commentContent{
+    color: black;
+    font-size: 14px;
+}
+
+.tagsTitle{
+    font-size: 12px;
+}
+
+.commentTag{
+    color: blue;
+    font-size: 12px;
+}
+
+/* POST VIEW */
+
+.postView{
+  display: grid;
+
+  width: 800px;
+  height: 700px;
+  grid-template-rows: repeat(12, 1fr);
+  grid-template-columns: repeat(5, 1fr);
+  border: 1px solid black;
+}
+
+.postViewH3{
+  grid-row: 1/2;
+  grid-column: 3/4;
+}
+
+.postViewPostTitle{
+  grid-row: 3/4;
+  grid-column: 1/2;
+}
+
+.postViewPostUser{
+  grid-row: 4/5;
+  grid-column: 1/2;
+}
+
+.postViewContent{
+  grid-row: 6/7;
+  grid-column: 1/6;
+  border: 1px solid red;
+  width: 100%;
+  word-break: break-all;
+
+}
+
+.postViewPostTags{
+  grid-row: 7/8;
+  grid-column: 1/2;
+}
+
+.postViewEditForm{
+  grid-row: 11/12;
+  grid-column: 2/3;
+}
+
+.postViewDeleteForm{
+  grid-row: 11/12;
+  grid-column: 4/5;
+}
+
+.postViewEditBtn, .postViewDeleteBtn{
+  border: solid 1px black;
+  width:100%;
+  height: 100%;
+}
+
+/* POST FORM */
+
+.postFormSection{
+  border: solid 1px black;
+  height: 425px;
+  width: 705px;
+  background-color: rgb(255, 255, 255);
+}
+
+.postFormHeader{
+  height: 40px;
+  display: flex;
+}
+
+.postFormFooter{
+  width: 615px;
+  border-top: rgb(246, 247, 248) solid 3px;
+  height: 40px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.postFormExistingUserBtn, .postFormHomeBtn{
+  width: 50%;
+}
+
+.postFormHomeBtn{
+  background-color: blue;
+  height: 100%;
+}
+
+.postFormExistingUserBtn{
+  background-color: red;
+  height: 100%;
+}
+
+.postFormExistingUser{
+  background-color: red;
+  height: 100%;
+}
+
+.postFormForm{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 740px;
+  /* height: 200px; */
+}
+
+.postFormHeader,.postFormUsername, .postFormTitle{
+  margin-bottom: 10px;
+  border: 1px solid rgb(40,40, 40);
+}
+
+
+.postFormUsername{
+  width: 270px;
+  height: 20px;
+  
+}
+
+.postFormTitle{
+  width: 615px;
+  height: 30px;
+ 
+}
+
+.postFormContent{
+  height: 140px;
+  width: 615px;
+  overflow-wrap:break-word ;
+  margin-bottom: 5px;
+  border: 1px solid rgb(246, 247, 248);
+  }
+
+.postFormTags{
+  width: 200px;
+  height: 10px;
+  border: none;
+}
+
+.postFormSubmitBtn{
+  height: 10px;
+}
+

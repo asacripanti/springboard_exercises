@@ -4,17 +4,14 @@
 
 {% block content %}
   <h3>Add User</h3>
-  <form method="post">
-    <label for="first_name">First Name:</label>
-    <input type="text" name="first_name" id="first_name" required><br>
+  <form class="addUserForm" method="post">
+    <label style="display: none;" for="user_name">Username</label>
+    <input class="addUserFormUsername" type="text" name="user_name" id="user_name" placeholder="Username" required>
 
-    <label for="last_name">Last Name:</label>
-    <input type="text" name="last_name" id="last_name" required><br>
+    <label style="display: none;" for="image_url">Image URL:</label>
+    <input class="addUserFormImg" type="text" name="image_url" id="image_url" placeholder="Image URL"><br>
 
-    <label for="image_url">Image URL:</label>
-    <input type="text" name="image_url" id="image_url"><br>
-
-    <button type="submit">Add User</button>
+    <button class="addUserSubmitBtn" type="submit">ADD USER</button>
   </form>
-  <a href="{{ url_for('show_all_users') }}">Cancel</a>
+  <a href="{{ url_for('home_page') }}">Cancel</a>
 {% endblock %}
