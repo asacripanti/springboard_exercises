@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block page_title %} Pet <List>% endblock %</List>
+
+{% block content %}
+<h1>Pets</h1>
+<div class="pet_listings">
+    {% for pet in pets %}
+        <div class="petInfo">
+            <span>{{ pet.name }}</span>
+            <span>{{ pet.species }}</span>
+
+
+        </div>
+    {% endfor %}    
+</div>
+{% endblock %}
