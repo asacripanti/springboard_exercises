@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %} Pet Info {% endblock %}
+
+{% block content %}
+<h1>Pet Info</h1>
+
+<p>Name: {{ pet.name }}</p>
+<p>Species: {{ pet.species }}</p>
+<p>Photo: <img src="{{ pet.photo_url }}" alt=""></p>
+<p>Notes: {{ pet.notes }}</p>
+<p>Available: {{ pet.available }}</p>
+
+<a href="/{{ pet.id }}/edit">Edit Pet</a>
+
+
+{% endblock %}
