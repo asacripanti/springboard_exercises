@@ -1,0 +1,57 @@
+span{
+    color: red;
+}
+
+.petListings{
+    display: flex;
+    border: solid 1px blue;
+    height: 600px;
+}
+
+.petInfoContainer{
+    /* display: grid;
+    grid-template-rows: repeat(22, 1fr);
+    grid-template-columns: 40px 1fr; */
+    flex-direction: column;
+    border: solid 1px black;
+    width: 260px;
+    height: 560px;
+}
+
+.nameBlock{
+    background-color: pink;
+}
+
+.pictureBlock{
+    background-color: teal;
+}
+
+.speciesBlock{
+    background-color: aquamarine;
+}
+
+.ageBlock{
+     background-color: violet;
+}
+
+.notesBlock{
+    background-color: orange;
+}
+
+.nameBlock, .pictureBlock, .speciesBlock, .ageBlock, .notesBlock{
+    height: 20%;
+}
+
+.petName{
+    font-size: 46px;
+    text-decoration: none;
+    text-align: center;
+    /* grid-row: 2/3;
+    grid-column: 2/3; */
+
+}
+
+.petImg{
+    height: 100%;
+    width: 100%;
+}

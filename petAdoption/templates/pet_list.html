@@ -1,17 +1,35 @@
 {% extends "base.html" %}
 
+{% block styles %}
+    <link rel="stylesheet" href="/static/styles/styles.css">
+{% endblock %}    
+
+
 {% block page_title %} Pet List {% endblock %}
 
 {% block content %}
 <h1>Pets</h1>
-<div class="pet_listings">
+<div class="petListings">
     {% for pet in pets %}
-        <div class="petInfo">
-            <a href="/{{ pet.id }}">{{ pet.name }}</a>
-            <span>{{ pet.name }}</span>
-            <span>{{ pet.species }}</span>
-
-
+        <div class="petInfoContainer">
+            <section class="nameBlock">
+                <a class="petName" href="/{{ pet.id }}">{{ pet.name }}</a>
+            </section>
+            <section class="pictureBlock">
+                <img class="petImg" src="{{pet.photo_url}}" alt="">
+            </section>
+            <section class="speciesBlock">
+                <span>Species:</span>
+                <span>{{ pet.species }}</span>
+            </section>
+            <section class="ageBlock">
+                <span>Age:</span>
+                <span>{{ pet.age }}</span>
+            </section>
+            <section class="notesBlock">
+                <span>Notes:</span>
+                <span>{{ pet.notes }}</span> 
+            </section>
         </div>
     {% endfor %}    
 </div>
