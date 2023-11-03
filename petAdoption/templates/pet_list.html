@@ -18,17 +18,19 @@
             <section class="pictureBlock">
                 <img class="petImg" src="{{pet.photo_url}}" alt="">
             </section>
-            <section class="speciesBlock">
-                <span>Species:</span>
-                <span>{{ pet.species }}</span>
-            </section>
-            <section class="ageBlock">
-                <span>Age:</span>
-                <span>{{ pet.age }}</span>
+            <section class="speciesAgeBlock">
+                <div class="speciesShell">
+                    <span class="speciesLabel">Species:</span>
+                    <span class="speciesName">{{ pet.species }}</span>
+                </div>
+                <div class="ageShell">
+                    <span class="petAgeLabel">Age:</span>
+                    <span class="petAge">{{ pet.age }}</span>
+                </div>
             </section>
             <section class="notesBlock">
-                <span>Notes:</span>
-                <span>{{ pet.notes }}</span> 
+                <span class="petNotesLabel">Notes:</span>
+                <span class="petNotes">{{ pet.notes }}</span> 
             </section>
         </div>
     {% endfor %}    

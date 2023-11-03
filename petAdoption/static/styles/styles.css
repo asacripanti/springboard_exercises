@@ -1,10 +1,7 @@
-span{
-    color: red;
-}
-
 .petListings{
     display: flex;
-    border: solid 1px blue;
+    justify-content: space-between;
+    /* border: solid 1px blue; */
     height: 600px;
 }
 
@@ -13,45 +10,109 @@ span{
     grid-template-rows: repeat(22, 1fr);
     grid-template-columns: 40px 1fr; */
     flex-direction: column;
-    border: solid 1px black;
+    border: solid 2px black;
     width: 260px;
     height: 560px;
 }
 
 .nameBlock{
-    background-color: pink;
+    /* background-color: pink; */
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
 }
 
 .pictureBlock{
-    background-color: teal;
+    /* background-color: teal; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.speciesBlock{
-    background-color: aquamarine;
-}
-
-.ageBlock{
-     background-color: violet;
+.speciesBlock, .ageBlock, .notesBlock{
+    /* background-color: aquamarine; */
+    display: flex;
+    flex-direction: column;
 }
 
 .notesBlock{
-    background-color: orange;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 15%;
 }
 
-.nameBlock, .pictureBlock, .speciesBlock, .ageBlock, .notesBlock{
+.nameBlock, .speciesAgeBlock{
     height: 20%;
 }
 
+.pictureBlock{
+    height: 45%;
+}
+
 .petName{
-    font-size: 46px;
+    font-family: 'Space Mono', sans-serif;
+    color: black;
+    font-size: 28px;
     text-decoration: none;
     text-align: center;
+    padding: 10px;
     /* grid-row: 2/3;
     grid-column: 2/3; */
 
 }
 
 .petImg{
-    height: 100%;
+    height: 90%;
     width: 100%;
+    border: none;
+}
+
+.speciesShell, .ageShell{
+    display: flex;
+    flex-direction: column;
+}
+
+.speciesShell{
+    padding-bottom: 24px;
+}
+
+.ageShell{
+
+}
+
+.speciesLabel, .speciesName, .petAgeLabel, .petAge, .petNotesLabel, .petNotes{
+    font-family: 'Space Mono', sans-serif;
+    padding-left: 7px;
+
+}
+
+.speciesLabel, .speciesName{
+    font-family: 'Space Mono', sans-serif;
+}
+
+.speciesLabel, .petAgeLabel, .petNotesLabel{
+    font-size: 12px;
+    color: rgb(115, 115, 115);
+}
+
+.speciesName, .petAge, .petNotes{
+    font-size: 17px;
+    color: black;
+}
+
+.petAgeLabel{
+
+}
+
+.petAge{
+
+}
+
+.petNotesLabel{
+
+}
+
+.petNotes{
+
 }
