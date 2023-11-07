@@ -3,7 +3,7 @@
 {% block page_title %} Feedback {% endblock %}
 
 {% block content %} 
-<form action="/users/{username}/feedback/add" method="POST">
+<form method="POST">
     {{form.hidden_tag() }}
     {% for field in form
     if field.widget.input_type != 'hidden' %}

@@ -92,6 +92,8 @@ def logout():
 def delete_user(username):
     """Delete User"""
 
+    # PRINT USERNAME
+
     user = User.query.get(username)
     db.session.delete(user)
     db.session.commit()
@@ -103,6 +105,8 @@ def delete_user(username):
 @app.route("/users/<username>/feedback/add", methods=['GET', 'POST'])   
 def feedback_new(username):
     """Add feedback form"""
+
+    print(f"Username: {username}")
 
     form = FeedbackForm()
 
@@ -116,13 +120,20 @@ def feedback_new(username):
             username=username
         )
 
+        print(feedback) 
+
         db.session.add(feedback)
         db.session.commit()
+
+        print(feedback.username)
 
         return redirect(f"/users/{feedback.username}")
 
     else:
         return render_template("feedback_new.html", form=form)
+
+if __name__ == '__main__':
+    app.run(debug=True)
 
 
 
